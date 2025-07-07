@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 type Language = 'en' | 'ar';
@@ -76,6 +75,18 @@ const translations = {
     edit: 'Edit',
     delete: 'Delete',
     confirm: 'Confirm',
+
+    emptyCart: 'Your cart is empty',
+    emptyCartDescription: 'Looks like you haven\'t added anything to your cart yet.',
+    continueShopping: 'Continue Shopping',
+    shoppingCart: 'Shopping Cart',
+    orderSummary: 'Order Summary',
+    subtotal: 'Subtotal',
+    shipping: 'Shipping',
+    free: 'Free',
+    tax: 'Tax',
+    total: 'Total',
+    proceedToCheckout: 'Proceed to Checkout',
   },
   ar: {
     // Navigation
@@ -142,6 +153,18 @@ const translations = {
     edit: 'تعديل',
     delete: 'حذف',
     confirm: 'تأكيد',
+
+    emptyCart: 'سلة التسوق فارغة',
+    emptyCartDescription: 'يبدو أنك لم تضف أي شيء إلى سلة التسوق بعد.',
+    continueShopping: 'متابعة التسوق',
+    shoppingCart: 'سلة التسوق',
+    orderSummary: 'ملخص الطلب',
+    subtotal: 'المجموع الفرعي',
+    shipping: 'الشحن',
+    free: 'مجاني',
+    tax: 'الضريبة',
+    total: 'المجموع',
+    proceedToCheckout: 'المتابعة للدفع',
   }
 };
 

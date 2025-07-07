@@ -1,21 +1,19 @@
+
 import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useCart } from '../contexts/CartContext';
 import { Button } from './ui/button';
 import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
 import { categories } from '../data/products';
+import { Link } from 'react-router-dom';
+
 const Header = () => {
-  const {
-    language,
-    toggleLanguage,
-    t,
-    isRTL
-  } = useLanguage();
-  const {
-    totalItems
-  } = useCart();
+  const { language, toggleLanguage, t, isRTL } = useLanguage();
+  const { totalItems } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  return <header className="sticky top-0 z-50 glass-effect border-b border-border/50">
+
+  return (
+    <header className="sticky top-0 z-50 glass-effect border-b border-border/50">
       <div className="container mx-auto px-4">
         {/* Top bar */}
         <div className="flex items-center justify-between py-2 text-sm border-b border-border/30">
@@ -39,14 +37,16 @@ const Header = () => {
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold tech-gradient bg-clip-text text-slate-50">
-              TechNest
-            </h1>
+            <Link to="/">
+              <h1 className="text-2xl font-bold tech-gradient bg-clip-text text-slate-50">
+                TechNest
+              </h1>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
-            <a href="#" className="hover:text-primary transition-colors">{t('home')}</a>
+            <Link to="/" className="hover:text-primary transition-colors">{t('home')}</Link>
             <div className="relative group">
               <button className="hover:text-primary transition-colors flex items-center gap-1">
                 {t('products')}
@@ -56,10 +56,12 @@ const Header = () => {
               </button>
               <div className="absolute top-full left-0 rtl:left-auto rtl:right-0 mt-2 w-64 glass-effect rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <div className="p-4 grid grid-cols-2 gap-2">
-                  {categories.map(category => <a key={category.id} href="#" className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/50 transition-colors">
+                  {categories.map(category => 
+                    <a key={category.id} href="#" className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/50 transition-colors">
                       <span className="text-xl">{category.icon}</span>
                       <span className="text-sm">{isRTL ? category.nameAr : category.name}</span>
-                    </a>)}
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -71,17 +73,25 @@ const Header = () => {
           <div className="flex items-center gap-4">
             {/* Search */}
             <div className="hidden md:flex items-center relative">
-              <input type="text" placeholder={t('search')} className="bg-accent/50 border border-border rounded-full px-4 py-2 pl-10 rtl:pl-4 rtl:pr-10 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all w-64" />
+              <input 
+                type="text" 
+                placeholder={t('search')} 
+                className="bg-accent/50 border border-border rounded-full px-4 py-2 pl-10 rtl:pl-4 rtl:pr-10 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all w-64" 
+              />
               <Search className={`absolute ${isRTL ? 'right-3' : 'left-3'} top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground`} />
             </div>
 
             {/* Cart */}
-            <button className="relative p-2 hover:bg-accent/50 rounded-full transition-colors">
-              <ShoppingCart className="w-6 h-6" />
-              {totalItems > 0 && <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  {totalItems}
-                </span>}
-            </button>
+            <Link to="/cart">
+              <button className="relative p-2 hover:bg-accent/50 rounded-full transition-colors">
+                <ShoppingCart className="w-6 h-6" />
+                {totalItems > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {totalItems}
+                  </span>
+                )}
+              </button>
+            </Link>
 
             {/* User */}
             <button className="p-2 hover:bg-accent/50 rounded-full transition-colors">
@@ -89,22 +99,29 @@ const Header = () => {
             </button>
 
             {/* Mobile menu toggle */}
-            <button className="lg:hidden p-2 hover:bg-accent/50 rounded-full transition-colors" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button 
+              className="lg:hidden p-2 hover:bg-accent/50 rounded-full transition-colors" 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && <div className="lg:hidden py-4 border-t border-border/30">
+        {isMenuOpen && (
+          <div className="lg:hidden py-4 border-t border-border/30">
             <nav className="space-y-4">
-              <a href="#" className="block hover:text-primary transition-colors">{t('home')}</a>
+              <Link to="/" className="block hover:text-primary transition-colors">{t('home')}</Link>
               <a href="#" className="block hover:text-primary transition-colors">{t('products')}</a>
               <a href="#" className="block hover:text-primary transition-colors">{t('about')}</a>
               <a href="#" className="block hover:text-primary transition-colors">{t('contact')}</a>
             </nav>
-          </div>}
+          </div>
+        )}
       </div>
-    </header>;
+    </header>
+  );
 };
+
 export default Header;
