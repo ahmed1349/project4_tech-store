@@ -1,19 +1,6 @@
-# Welcome to your Lovable project
+# Welcome in my github this my project 4 in my plan to create 100 website
 
 ## Project info
-
-**URL**: https://lovable.dev/projects/ec14370e-fa5d-4919-8c96-ec57b3c25cb6
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/ec14370e-fa5d-4919-8c96-ec57b3c25cb6) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
 **Use your preferred IDE**
 
 If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
