@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 type Language = 'en' | 'ar';
@@ -61,7 +62,7 @@ const translations = {
     quickLinks: 'Quick Links',
     customerService: 'Customer Service',
     faq: 'FAQ',
-    shipping: 'Shipping Info',
+    shippingInfo: 'Shipping Info',
     returns: 'Returns',
     privacy: 'Privacy Policy',
     terms: 'Terms of Service',
@@ -139,7 +140,7 @@ const translations = {
     quickLinks: 'روابط سريعة',
     customerService: 'خدمة العملاء',
     faq: 'الأسئلة الشائعة',
-    shipping: 'معلومات الشحن',
+    shippingInfo: 'معلومات الشحن',
     returns: 'المرتجعات',
     privacy: 'سياسة الخصوصية',
     terms: 'شروط الخدمة',
